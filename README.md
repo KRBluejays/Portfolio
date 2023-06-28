@@ -57,8 +57,3 @@ This project explores object detection in autonomous vehicles using cameras. Typ
 ---
 
 If you are interested in contributing or collaborating, or if you would like more information, please don't hesitate to contact me.
-
-
-Certainly! You can offer language selection options in the README by providing links to the different language versions of the documentation. Here's how you can modify the README to include an option for users to choose between English and Korean versions:
-
----
