@@ -1,7 +1,7 @@
 # Project Portfolio
 
 ## Language Selection
-- :us: [English](#project-portfolio) | :kr: [한국어 (Korean)](README.ko.md)
+- :us: [English](README.md) | :kr: [한국어 (Korean)](README.ko.md)
 
 This README provides a concise overview of the various projects I have been involved in, highlighting their objectives and the roles I played.
 
@@ -53,6 +53,21 @@ HeartBit 프로젝트는 혼자 사는 노인들에게 도움을 주기 위해 �
 
 ### Overview
 이 프로젝트는 카메라만으로 객체를 감지하는 것에 중점을 두고 있습니다. 자율주행 차량은 라이다, 레이더, 카메라를 사용하여 객체를 감지합니다. 객체의 움직임 감지 정확도를 향상시키기 위해, 3D로 매핑 후 차량에 정보를 전달하는 연구를 수행하고 있습니다.
+
+## Mobility Ideas Portfolio
+- **Year**: 2023
+
+### Overview
+이동성 아이디어 포트폴리오는 교통의 미래를 재정의하는 혁신적이고 선도적인 개념들을 모은 컬렉션입니다. 2023년에 개발된 이 포트폴리오는 자율 주행 차량 기술의 잠재력을 탐구하며, 통근자와 여행자들에게 새로운 경험을 제공합니다. 이는 이동성이 단순한 이동을 넘어 우리의 생활 및 업무 공간, 개인 시간, 그리고 소매 경험의 연장선이 될 수 있음을 영감을 주고 생각을 자극하기 위해 설계되었습니다.
+
+### Contents
+1. **Mobile Offices**: 생산적인 업무 시간으로 변모시키는 개념으로, 이동식 작업 공간을 제공합니다.
+   
+2. **Relaxation Pods**: 휴식과 재충전의 시간이 필요한 현대 사회에서, 이 포드는 맞춤형 주변 환경 설정, 마사지 의자, 웰니스 기술을 특징으로 합니다.
+
+3. **Retail and Showroom Experiences**: 쇼핑은 꼭 온라인과 백화점 또는 아울렛에서만 해야하는가? 이동수단에서 직접 입어보고 서비스는 받아볼 수 없을까에서 파생된 아이디어입니다.
+
+4. **Sleep Pods for Long Journeys**: 편안함과 사생활 보호에 중점을 둔 이 포드는 장거리 여행자들을 위한 평화로운 수면 환경을 제공합니다.
 
 ---
 
