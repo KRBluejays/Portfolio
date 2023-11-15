@@ -54,15 +54,13 @@ This project is about classifying news articles into different categories. We an
 ### Overview
 This project explores object detection in autonomous vehicles using cameras. Typically, autonomous vehicles use lidar, radar, and cameras for object detection. Our focus is on enhancing the detection accuracy of object movement by conducting research on 3D mapping and relaying that information to the vehicle for better decision-making.
 
-Certainly! Here's a README content template for your GitHub repository containing your Mobility Ideas portfolio:
-
 ## Mobility Ideas Portfolio
 
 - **Year**: 2023
 
 ### Overview
 
-Welcome to the Mobility Ideas Portfolio, a collection of forward-thinking and innovative concepts aimed at redefining the future of transportation. This portfolio, developed in 2023, explores the potential of autonomous vehicle technology in creating new experiences for commuters and travelers. It is designed to inspire and provoke thought on how mobility can be more than just movement — it can be an extension of our living and working spaces, our personal time, and our retail experiences.
+The Mobility Ideas Portfolio is a collection of forward-thinking and innovative concepts aimed at redefining the future of transportation. This portfolio, developed in 2023, explores the potential of autonomous vehicle technology in creating new experiences for commuters and travelers. It is designed to inspire and provoke thought on how mobility can be more than just movement — it can be an extension of our living and working spaces, our personal time, and our retail experiences.
 
 ### Contents
 
