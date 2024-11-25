@@ -413,6 +413,7 @@ Ko-IFEval은 대규모 언어 모델(LLM)의 지시어 수행 능력을 평가�
 | 시작/끝 | 끝 문구 검사 | 특정 문구로 끝나야 함 | "응답을 {끝 문구}로 끝내세요" |
 | | 따옴표 | 전체 응답을 따옴표로 감싸기 | "전체 응답을 큰따옴표로 감싸세요" |
 | 문장부호 | 쉼표 금지 | 쉼표 사용 금지 | "응답에 쉼표를 사용하지 마세요" |
+
 ##### 2. 평가 메트릭
 
 ###### 기본 개념
@@ -428,56 +429,51 @@ Ko-IFEval은 대규모 언어 모델(LLM)의 지시어 수행 능력을 평가�
 2. 'happy' 단어 3번 이상 사용
 ```
 
-###### 지시어 성공 여부 판단
-각 지시어 유형별로 성공 조건을 정의한 checker 클래스가 존재합니다. 예를 들어:
-
-1. 키워드 포함 체크
-```python
-# 응답에 모든 키워드가 포함되어 있는지 확인
-def check_following(self, value):
-    for keyword in self._keywords:
-      if not re.search(keyword, value, flags=re.IGNORECASE):
-        return False
-    return True
-```
-
-2. 단어 수 체크
-```python
-# 응답의 단어 수가 조건을 만족하는지 확인
-def check_following(self, value):
-    num_words = count_words(value)
-    if self._comparison_relation == "less than":
-      return num_words < self._num_words
-    else:
-      return num_words >= self._num_words
-```
-
 ###### 엄격한 평가 (Strict Evaluation)
-각 프롬프트에 대해 다음 두 가지 정확도를 계산:
+각 지시어는 해당 유형에 맞는 checker 클래스를 통해 성공 여부를 판단합니다:
+```python
+예시1) 키워드 체크:
+if re.search(keyword, response, flags=re.IGNORECASE):
+    return True  # 성공
+
+예시2) 단어 수 체크:
+if words_count >= required_words:
+    return True  # 성공
+```
+
+이러한 개별 체크 결과를 바탕으로 두 가지 정확도를 계산합니다:
 
 1. 프롬프트 단위 정확도 (prompt-level accuracy)
 - 프롬프트 내의 모든 지시어를 성공적으로 수행한 비율
-- 계산식: (모든 지시어의 check_following()이 True인 프롬프트 수) / (전체 프롬프트 수)
+- 계산식: (모든 지시어 성공한 프롬프트 수) / (전체 프롬프트 수)
+- 성공 조건: 프롬프트 내 모든 지시어의 checker가 True 반환
+```
+예시: 100개의 프롬프트 중 75개의 프롬프트가 모든 지시어를 성공 → 75% 정확도
+```
 
 2. 지시어 단위 정확도 (instruction-level accuracy) 
 - 전체 지시어 중 성공적으로 수행된 비율
-- 계산식: (check_following()이 True인 지시어 수) / (전체 지시어 수)
+- 계산식: (성공한 지시어 수) / (전체 지시어 수)
+- 성공 조건: 개별 지시어의 checker가 True 반환
+```
+예시: 전체 150개 지시어 중 120개 성공 → 80% 정확도
+```
 
 ###### 유연한 평가 (Loose Evaluation)
-응답 텍스트에 다음 전처리를 적용한 후 동일한 정확도 계산:
+응답 텍스트에 다음 전처리를 적용한 후 동일한 체커와 정확도 계산 방식 적용:
 
 1. 마크다운 기호(*) 제거
 2. 첫 줄 제거 
 3. 마지막 줄 제거
 4. 위의 1-3을 조합한 변형들 (총 8가지 변형)
 
-각 변형에 대해 check_following()을 실행하고, 하나라도 True가 나오면 해당 지시어를 성공으로 간주합니다.
+각 변형에 대해 지시어 수행 여부를 확인하고, 하나라도 성공하면 해당 지시어를 성공으로 간주합니다.
 
 ```
 예시:
 프롬프트: "**행복한** 하루입니다"
-- 엄격한 평가: "행복한"이라는 단어가 정확히 없음 (check_following() → False)
-- 유연한 평가: 마크다운 제거 후 "행복한 하루입니다"에서 발견 (check_following() → True)
+- 엄격한 평가: "행복한"이라는 단어가 정확히 없음 (실패)
+- 유연한 평가: 마크다운 제거 후 "행복한 하루입니다"에서 발견 (성공)
 ```
 
 평가 결과는 각 모델별로 다음 4가지 메트릭으로 보고됩니다:
